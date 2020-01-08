@@ -48,9 +48,14 @@ function eventbrite_api_init() {
 	if ( Eventbrite_Requirements::has_active_connection() ) {
 		require_once( 'inc/class-eventbrite-manager.php' );
 		require_once( 'inc/class-eventbrite-query.php' );
+		require_once( 'inc/class-eventbrite-rest-endpoints.php' );
 		require_once( 'inc/class-eventbrite-templates.php' );
 		require_once( 'inc/class-eventbrite-event.php' );
 		require_once( 'inc/functions.php' );
+
+		$rest_endpoints = new Eventbrite_Routes();
+		$rest_endpoints->register_routes();
 	}
 }
+
 add_action( 'init', 'eventbrite_api_init' );
